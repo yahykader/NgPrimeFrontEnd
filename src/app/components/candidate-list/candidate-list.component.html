@@ -1,0 +1,50 @@
+<div class="col-md-8">
+<div class="card  haut">
+  <div class="card-header text-center">
+    List Of Candidates
+    <button type="button" pButton icon="fa fa-plus" style="float:right" label="Add"
+            (click)="addNewCandidate()"></button>
+  </div>
+  <div class="card-body">
+    <p-table  [value]="listCandidates">
+      <ng-template pTemplate="caption">
+           List of Cars
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let col of cols">
+            {{col.header}}
+          </th>
+        </tr>
+      </ng-template>
+        <ng-template pTemplate="body" let-listCandidates>
+          <tr>
+            <td>{{listCandidates.id}}</td>
+            <td>{{listCandidates.name}}</td>
+            <td>{{listCandidates.naissance | date: 'MM/dd/yyyy'}}
+            </td>
+            <td>{{listCandidates.gender}}</td>
+            <td> <button type="button" pButton (click)="selectCandidate()"  icon="fa fa-edit"></button></td>
+            <td> <button type="button" pButton (click)="selectCandidate()"  icon="fa fa-trash" class="ui-button-danger"></button></td>
+          </tr>
+        </ng-template>
+      <ng-template pTemplate="summary">
+        There are {{listCandidates?.length}} listCandidates
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+</div>
+
+<!--
+<div *ngIf="candidate">
+  <app-candidate-detail [candidate]="candidate"  (saveCandidateEvent)="saveCandidate($event)"
+                        (closeDialogEvent)="closeDialogForm()" ></app-candidate-detail>
+</div>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>-->
